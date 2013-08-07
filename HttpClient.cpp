@@ -39,10 +39,9 @@ string HttpClient::Get(string uri)
 {
 	Connect();
 
-	tcp_stream << "GET ";
-	tcp_stream << uri;
-	tcp_stream << " HTTP/1.0";
-	tcp_stream << "\n\nHOST: " << host_address;
+	tcp_stream << "GET " << uri << " HTTP/1.0\r\n";
+	tcp_stream << "HOST: " << host_address << "\r\n";
+	tcp_stream << "\r\n";
 	tcp_stream.flush();
 
 	istream_iterator<char> it(tcp_stream);
