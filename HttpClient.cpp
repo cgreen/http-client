@@ -44,6 +44,9 @@ string HttpClient::Get(string uri)
 	tcp_stream << "\r\n";
 	tcp_stream.flush();
 
+	// Need to preserve whitespace
+	tcp_stream << std::noskipws;
+
 	istream_iterator<char> it(tcp_stream);
 	istream_iterator<char> end;
 	string results(it, end);
